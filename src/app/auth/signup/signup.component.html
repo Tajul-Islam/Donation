@@ -1,1 +1,51 @@
-<p>signup works!</p>
+<div class="row">
+  <div class="col-sm-7"></div>
+  <div class="col-sm-5">
+    <div class="alert alert-danger" *ngIf="error">
+      <p>{{ error }}</p>
+    </div>
+    <div *ngIf="isLoading" style="text-align: center;">
+      <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+    </div>
+    <p-card styleClass="p-card-shadow" *ngIf="!isLoading">
+      <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+        <div class="p-field p-fluid">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            ngModel
+            name="email"
+            required
+            email
+            pInputText
+            aria-describedby="email-help"
+          />
+          <small id="email-help">Enter valid Email Address.</small>
+        </div>
+        <div class="p-field p-fluid">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            ngModel
+            name="password"
+            required
+            minlength="6"
+            pInputText
+            aria-describedby="password-help"
+          />
+          <small id="password-help">minimum length 6</small>
+        </div>
+        <div class="p-field p-fluid">
+         <p-button label="Sign Up" type="submit" [disabled]="!authForm.valid"></p-button>
+        </div>
+      </form>
+      <ng-template pTemplate="footer">
+        <p style="text-align: right !important;">Already have an account <a routerLink="/login">Log In</a></p>
+      </ng-template>
+    </p-card>
+  </div>
+</div>

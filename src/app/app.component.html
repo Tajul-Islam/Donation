@@ -1,6 +1,6 @@
-<p-menubar [model]="items">
+<p-menubar [model]="items" *ngIf="isAuthenticated">
   <div>
-    <button type="button" pButton label="Logout" icon="pi pi-power-off" style="margin-left:.25em"></button>
+    <button type="button" pButton label="Logout" icon="pi pi-power-off" style="margin-left:.25em" (click)="onLogout()"></button>
   </div>
 </p-menubar>
 <div class="container">

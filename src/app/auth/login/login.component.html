@@ -1,21 +1,53 @@
 <div class="row">
   <div class="col-sm-7"></div>
   <div class="col-sm-5">
-    <p-card styleClass="p-card-shadow">
-      <div class="p-field p-fluid">
-          <label for="username">Username</label>
+    <div class="alert alert-danger" *ngIf="error">
+      <p>{{ error }}</p>
+    </div>
+    <div *ngIf="isLoading" style="text-align: center;">
+      <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+    </div>
+    <p-card styleClass="p-card-shadow" *ngIf="!isLoading">
+      <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+        <div class="p-field p-fluid">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              ngModel
+              name="email"
+              required
+              email
+              #email="ngModel"
+              pInputText
+              aria-describedby="email-help"
+            />
+            <small id="email-help" *ngIf="!email.valid && email.touched">Enter valid Email Address.</small>
+          </div>
+        <div class="p-field p-fluid">
+          <label for="password">Password</label>
           <input
-            id="username"
-            type="username"
+            type="password"
+            id="password"
+            class="form-control"
+            ngModel
+            name="password"
+            required
+            minlength="6"
             pInputText
-            aria-describedby="username-help"
+            #password="ngModel"
+            aria-describedby="password-help"
           />
-          <small id="username-help"
-          >Enter your username to reset your password.</small
-          >
+          <small id="password-help" *ngIf="!password.valid && password.touched">minimum length 6</small>
         </div>
-      <ng-template pTemplate="footer">
-        <p-button label="Save"></p-button>
+        <div class="p-field p-fluid">
+          <br>
+         <p-button label="Log In" type="submit" [disabled]="!authForm.valid"></p-button>
+        </div>
+      </form>
+      <ng-template pTemplate="footer" align="right">
+        <p style="text-align: right !important;">Don't have an account <a routerLink="/signup">Sign Up</a></p>
       </ng-template>
     </p-card>
   </div>
