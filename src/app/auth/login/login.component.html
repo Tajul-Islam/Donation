@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-sm-7"></div>
+  <div class="col-sm-5">
+    <p-card styleClass="p-card-shadow">
+      <div class="p-field p-fluid">
+          <label for="username">Username</label>
+          <input
+            id="username"
+            type="username"
+            pInputText
+            aria-describedby="username-help"
+          />
+          <small id="username-help"
+          >Enter your username to reset your password.</small
+          >
+        </div>
+      <ng-template pTemplate="footer">
+        <p-button label="Save"></p-button>
+      </ng-template>
+    </p-card>
+  </div>
+</div>
