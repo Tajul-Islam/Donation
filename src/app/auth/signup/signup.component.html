@@ -1,5 +1,7 @@
 <div class="row">
-  <div class="col-sm-7"></div>
+  <div class="col-sm-7">
+    <h1>Wall of Humanity</h1>
+  </div>
   <div class="col-sm-5">
     <div class="alert alert-danger" *ngIf="error">
       <p>{{ error }}</p>
@@ -19,10 +21,11 @@
             name="email"
             required
             email
+            #email="ngModel"
             pInputText
             aria-describedby="email-help"
           />
-          <small id="email-help">Enter valid Email Address.</small>
+          <small id="email-help" *ngIf="!email.valid && email.touched">Enter valid Email Address.</small>
         </div>
         <div class="p-field p-fluid">
           <label for="password">Password</label>
@@ -35,11 +38,13 @@
             required
             minlength="6"
             pInputText
+            #password="ngModel"
             aria-describedby="password-help"
           />
-          <small id="password-help">minimum length 6</small>
+          <small id="password-help" *ngIf="!password.valid && password.touched">minimum length 6</small>
         </div>
         <div class="p-field p-fluid">
+          <br>
          <p-button label="Sign Up" type="submit" [disabled]="!authForm.valid"></p-button>
         </div>
       </form>

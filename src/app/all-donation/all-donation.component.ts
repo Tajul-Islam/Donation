@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PostsService} from "../shared/posts.service";
 
 @Component({
   selector: 'app-all-donation',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./all-donation.component.css']
 })
 export class AllDonationComponent implements OnInit {
-
-  constructor() { }
+  allDonaton: any;
+  constructor(private postsService: PostsService) { }
 
   ngOnInit(): void {
+    this.postsService.fetchPosts().subscribe(data => {
+      this.allDonaton = data;
+    });
   }
 
 }

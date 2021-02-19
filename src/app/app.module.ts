@@ -10,16 +10,26 @@ import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {MenubarModule} from 'primeng/menubar';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { AllDonationComponent } from './all-donation/all-donation.component';
+import { PostDonationComponent } from './post-donation/post-donation.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { BloodGroupComponent } from './blood-group/blood-group.component';
+import {AuthInterceptorService} from './auth/auth-interceptor.service';
+import { MyPostComponent } from './my-post/my-post.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    AllDonationComponent
+    AllDonationComponent,
+    PostDonationComponent,
+    BloodGroupComponent,
+    MyPostComponent
   ],
   imports: [
     BrowserModule,
@@ -31,8 +41,13 @@ import { AllDonationComponent } from './all-donation/all-donation.component';
     InputTextModule,
     InputTextareaModule,
     MenubarModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

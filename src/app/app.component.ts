@@ -20,21 +20,29 @@ export class AppComponent implements OnInit, OnDestroy {
     });
     this.items = [
       {
-        label: 'Test',
-        routerLink: 'home'
+        label: 'Wall of Humanity',
+        routerLink: '/home'
       },
       {
-        label: 'Page 1',
+        label: 'Home',
         icon: 'pi pi-fw pi-home',
-        routerLink: 'home'
+        routerLink: '/home'
       },
       {
-        label: 'Page 2',
-        icon: 'pi pi-fw pi-user'
+        label: 'Blood Group',
+        icon: 'pi pi-fw pi-plus-circle',
+        routerLink: '/bloodgroup'
       },
       {
-        label: 'Page 3',
-        icon: 'pi pi-fw pi-bars'
+        label: 'Post Donation',
+        icon: 'pi pi-fw pi-upload',
+        routerLink: '/donate'
+      }
+      ,
+      {
+        label: 'My Post',
+        icon: 'pi pi-fw pi-user',
+        routerLink: '/mypost'
       }
     ];
   }

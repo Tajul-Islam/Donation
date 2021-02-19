@@ -1,13 +1,18 @@
-<div class="row">
+<div class="row" *ngFor="let donation of allDonaton" style="margin-bottom: 10px">
   <div class="col-sm-2"></div>
   <div class="col-sm-8">
-    <p-card styleClass="p-card-shadow">
+    <p-card header="{{donation.title}}"  styleClass="p-card-shadow">
       <ng-template pTemplate="header">
-        <img alt="Card" src="assets/image.jpg">
+        <img alt="Card" src="{{donation.donationPic}}">
       </ng-template>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-        quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
+      <p>{{donation.donationDetails}}</p>
       <ng-template pTemplate="footer">
+        <div class="card">
+          <div class="card-body">
+            <h5> <a href="" class="card-link">Phone Number: </a> <span>{{donation.phoneNumber}}</span> </h5>
+            <h5> <a href="" class="card-link">Pickup Address: </a> <span>{{donation.pickup_address}}</span></h5>
+          </div>
+        </div>
       </ng-template>
     </p-card>
   </div>

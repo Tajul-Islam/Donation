@@ -1,1 +1,116 @@
-<p>blood-group works!</p>
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <p-card styleClass="p-card-shadow">
+      <form #postForm="ngForm" (ngSubmit)="onFindBlood(postForm.value)">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="blood_group">Blood Group</label>
+              <input
+                type="text"
+                class="form-control"
+                id="blood_group"
+                required
+                ngModel
+                name="blood_group"
+              />
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="contactNumber">Contact Number</label>
+              <input
+                type="text"
+                class="form-control"
+                id="contactNumber"
+                required
+                ngModel
+                name="contactNumber"
+              />
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="contact_name">Contact Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="contact_name"
+                required
+                ngModel
+                name="contact_name"
+              />
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="hospital_name">Hospital Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="hospital_name"
+                required
+                ngModel
+                name="hospital_name"
+              />
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="details">Details</label>
+              <textarea
+                class="form-control"
+                id="details"
+                required
+                ngModel
+                name="details"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="!postForm.valid"
+        >
+          Send Post
+        </button>
+      </form>
+      <ng-template pTemplate="footer">
+      </ng-template>
+    </p-card>
+  </div>
+  <div class="col-sm-2"></div>
+</div>
+<br>
+<div class="row" *ngFor="let data of allGroupData" style="margin-bottom: 10px">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <p-card  styleClass="p-card-shadow">
+      <ng-template pTemplate="header">
+        <br>
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-10">
+            <h5 style="text-align: justify">{{data.details}}</h5>
+          </div>
+          <div class="col-sm-1"></div>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="footer">
+        <div class="card">
+          <div class="card-body" >
+            <h5> <a href="#" class="card-link">Blood Group: </a> <span>{{data.bloodGroup}}</span></h5>
+            <h5> <a href="#" class="card-link">Location: </a> <span>{{data.hospitalName}}</span></h5>
+            <h5> <a href="#" class="card-link">Contact Name: </a> <span>{{data.contactName}}</span></h5>
+            <h5> <a href="#" class="card-link">Contact Number: </a> <span>{{data.contactNumber}}</span></h5>
+          </div>
+        </div>
+      </ng-template>
+    </p-card>
+  </div>
+  <div class="col-sm-2"></div>
+</div>
+
+

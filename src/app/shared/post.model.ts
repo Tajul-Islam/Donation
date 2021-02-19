@@ -1,5 +1,9 @@
 export interface Post {
   title: string;
-  content: string;
+  donationDetails: string;
+  phoneNumber: string;
+  pickup_address: string;
+  donationPic: string;
+  userId: string;
   id?: string;
 }
